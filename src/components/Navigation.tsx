@@ -6,6 +6,7 @@ export default function Navigation() {
 
     const onSignOutHandler = () => {
         localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('token');
         router.push('/login');
     }
 
