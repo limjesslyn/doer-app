@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 export default function Navigation() {
     return (
         <div className="navbar border-b-2">
             <div className="flex-1">
-                <a href="/home" className="btn btn-ghost normal-case text-xl">doer</a>
+                <Link href="/home" className="btn btn-ghost normal-case text-xl">doer</Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">

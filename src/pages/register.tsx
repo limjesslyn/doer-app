@@ -5,6 +5,7 @@ import useAuth from '@/hooks/useAuth';
 import useInput from '@/hooks/useInput';
 import { API_BASE_URL } from '@/utils/const';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function register() {
     const { isAuthenticated } = useAuth();
@@ -178,12 +179,12 @@ export default function register() {
             </div>
             <p className="text-center text-sm text-gray-500">
                 Already have an account? {' '}
-                <a
+                <Link
                     href="/login"
                     className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
                 >
                     Login here
-                </a>
+                </Link>
             </p>
         </div>
     )
