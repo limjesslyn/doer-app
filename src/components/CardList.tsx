@@ -1,6 +1,6 @@
 import Card from "./Card"
 
-export default function CardList({taskList}:any) {
+export default function CardList({taskList, onDelete}:any) {
     // const taskList = props.taskList;
 
     console.log(taskList);
@@ -11,6 +11,7 @@ export default function CardList({taskList}:any) {
                 <Card
                     key={task.id}
                     {...task}
+                    onDelete={onDelete}
                 />
             )
         })
