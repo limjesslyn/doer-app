@@ -44,7 +44,7 @@ export default function Profile() {
 
                 if (res.ok) {
                     alert('Update success!');
-                    router.push('/home');
+                    router.refresh();
                 }
             } catch (error) {
                 console.log('Error', error);

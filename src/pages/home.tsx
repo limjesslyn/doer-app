@@ -36,32 +36,6 @@ export default function Home() {
         }
     }
 
-    const onEdit = async (taskID:any) => {
-        const token = localStorage.getItem('token');
-
-        try {
-            const res = await fetch(`${API_BASE_URL}/task/${taskID}`, {
-                method: 'PATCH',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                // body: JSON.stringify({
-                //     name:,
-                //     description:,
-                //     is_complete:
-                // })
-            })
-
-            if (res.ok) {
-                alert('task deleted successfully!')
-            }
-        } catch (error) {
-            console.log('Error', error);
-
-        }
-    }
-
     const onDelete = async (taskID:any) => {
         const token = localStorage.getItem('token');
 
@@ -76,6 +50,7 @@ export default function Home() {
 
             if (res.ok) {
                 alert('task deleted successfully!')
+                router.refresh();
             }
         } catch (error) {
             console.log('Error', error);
@@ -96,7 +71,7 @@ export default function Home() {
                     <h2 className="text-center text-xl">Your List</h2>
                     <div className='divider' />
                     <div>
-                        <CardList taskList={taskList} onDelete={onDelete}/>
+                        <CardList taskList={taskList} onDelete={onDelete} />
                     </div>
                     <div className='fixed z-90 bottom-10 right-8'>
                         <button

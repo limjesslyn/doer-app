@@ -1,8 +1,19 @@
 import { API_BASE_URL, showFormattedDate } from "@/utils/utils";
+import { useRouter } from "next/router";
 
 export default function Card(props: any) {
-    console.log(props);
+    const router = useRouter();
 
+    const onEditHandler = () => {
+        router.push({
+            pathname: '/editTask',
+            query: {
+                taskID: `${props.id}`,
+                name: `${props.name}`,
+                description: `${props.description}`
+            }
+        })
+    }
 
     return (
         <>
@@ -12,11 +23,18 @@ export default function Card(props: any) {
                     <h2 className="card-title">{props.name}</h2>
                     <p className="truncate">{props.description}</p>
                     <div className="card-actions justify-end flex flex-row flex-nowrap gap-4 mt-4">
-                        <button className="btn btn-info hover:bg-sky-600 hover:border-sky-600 text-white md:w-1/4 sm:w-1/2">Edit</button>
+                        <button
+                            className="btn btn-info hover:bg-sky-600 hover:border-sky-600 text-white md:w-1/4 sm:w-1/2"
+                            onClick={onEditHandler}
+                        >
+                            Edit
+                        </button>
                         <button
                             className="btn btn-error hover:bg-red-500 hover:border-red-500 md:w-1/4 sm:w-1/2 text-white"
                             onClick={() => props.onDelete(props.id)}
-                        >Delete</button>
+                        >
+                            Delete
+                        </button>
                     </div>
                 </div>
             </div>
