@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Link from "next/link";
 import useAuth from '@/hooks/useAuth';
 import LoginPage from './login';
-
+import CardList from '@/components/CardList';
 
 export default function Home() {
     const { isAuthenticated } = useAuth();
@@ -14,13 +14,9 @@ export default function Home() {
             <>
                 <Navigation />
                 <main className="flex min-h-screen flex-col p-6">
-                    <h2 className="text-center">To Do List</h2>
-                    <div>
-                        <ul>
-                            <li>
-                                <Link href={"/other"}>Other</Link>
-                            </li>
-                        </ul>
+                    <h2 className="text-center text-xl underline">Your List</h2>
+                    <div className='mt-4'>
+                        <CardList />
                     </div>
                 </main>
             </>
