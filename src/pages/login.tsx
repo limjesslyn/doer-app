@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function login() {
-    const {isAuthenticated} = useAuth();
+    const { isAuthenticated } = useAuth();
 
     const router = useRouter();
 
