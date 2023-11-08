@@ -17,7 +17,7 @@ export default function login() {
 
     const onLoginHandler = async (e: any) => {
         e.preventDefault();
-        
+
         try {
             const res = await fetch(`${API_BASE_URL}/auth/signin`, {
                 method: 'POST',
@@ -32,9 +32,9 @@ export default function login() {
 
             const data = await res.json();
             if (res.ok) {
-                localStorage.setItem('isLoggedIn','true')
-                localStorage.setItem('token',data.token)
-                
+                localStorage.setItem('isLoggedIn', 'true')
+                localStorage.setItem('token', data.token)
+
                 router.push('/home');
             } else {
                 alert(`Your username or password doesn't match!`)
@@ -42,10 +42,9 @@ export default function login() {
         } catch (error) {
             console.error('Error', error);
         }
-
     }
 
-    if (isAuthenticated){
+    if (isAuthenticated) {
         router.push('/home');
     }
 

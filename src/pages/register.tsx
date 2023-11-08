@@ -42,8 +42,6 @@ export default function register() {
                     })
                 })
 
-                const data = await res.json();
-
                 if (res.ok) {
                     router.push('/login');
                 }

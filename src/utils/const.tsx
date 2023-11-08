@@ -7,3 +7,8 @@
  */
 
 export const API_BASE_URL = 'https://task.amidin.site';
+
+export interface ProfileProps {
+    email: string,
+    name: string
+}
