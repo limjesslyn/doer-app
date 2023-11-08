@@ -13,4 +13,11 @@ export interface ProfileProps {
     name: string
 }
 
-export const ITEM_PER_PAGE = 6;
+export const showFormattedDate = (date:any) => {
+    return new Date(date).toLocaleDateString('en-EN', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+};

@@ -1,7 +1,7 @@
 import 'tailwindcss/tailwind.css';
 
 import Navigation from "@/components/Navigation"
-import { API_BASE_URL, ProfileProps } from '@/utils/const';
+import { API_BASE_URL, ProfileProps } from '@/utils/utils';
 import { useEffect, useState } from 'react';
 import useInput from '@/hooks/useInput';
 import { useRouter } from 'next/navigation';
@@ -84,7 +84,7 @@ export default function Profile() {
     return (
         <>
             <Navigation />
-            <main className="flex min-h-screen flex-col max-w-xl mx-auto p-6">
+            <main className="flex flex-col max-w-xl mx-auto p-6">
                 <h2 className="font-semibold text-lg">Your Profile</h2>
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
                     <form className="space-y-6" onSubmit={onUpdateHandler}>

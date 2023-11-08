@@ -3,7 +3,7 @@ import 'tailwindcss/tailwind.css';
 
 import useAuth from '@/hooks/useAuth';
 import useInput from '@/hooks/useInput';
-import { API_BASE_URL } from '@/utils/const';
+import { API_BASE_URL } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
