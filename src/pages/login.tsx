@@ -31,9 +31,10 @@ export default function login() {
             })
 
             const data = await res.json();
-            console.log(data);
             if (res.ok) {
                 localStorage.setItem('isLoggedIn','true')
+                localStorage.setItem('token',data.token)
+                
                 router.push('/home');
             } else {
                 alert(`Your username or password doesn't match!`)
