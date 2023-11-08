@@ -5,6 +5,7 @@ import Link from "next/link";
 import useAuth from '@/hooks/useAuth';
 import LoginPage from './login';
 import CardList from '@/components/CardList';
+import Footer from '@/components/Footer';
 
 export default function Home() {
     const { isAuthenticated } = useAuth();
@@ -19,6 +20,7 @@ export default function Home() {
                         <CardList />
                     </div>
                 </main>
+                <Footer />
             </>
         )
     }

@@ -10,7 +10,7 @@ export default function Navigation() {
     }
 
     return (
-        <div className="navbar border-b-2">
+        <div className="navbar border-b-2 bg-base-300">
             <div className="flex-1">
                 <Link href="/home" className="btn btn-ghost normal-case text-xl">doer</Link>
             </div>
