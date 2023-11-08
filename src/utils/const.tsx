@@ -12,3 +12,5 @@ export interface ProfileProps {
     email: string,
     name: string
 }
+
+export const ITEM_PER_PAGE = 6;
