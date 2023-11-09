@@ -38,7 +38,6 @@ export default function Home() {
     const onDeleteHandler = async (taskID: any) => {
         try {
             const res = await onDelete(taskID);
-
             if (res !== undefined) {
                 if (res.ok) {
                     alert('task deleted successfully!')
@@ -59,7 +58,6 @@ export default function Home() {
         return (
             <>
                 <Navigation />
-                {/* <main className="flex min-h-screen flex-col p-6"> */}
                 <main className="flex flex-col p-6">
                     <h2 className="text-center text-xl">Your List</h2>
                     <div className='divider' />

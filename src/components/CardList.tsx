@@ -55,7 +55,7 @@ export default function CardList({ taskList, onDelete }: any) {
                         <button className="join-item btn rounded-r" onClick={() => increase(totalPages)}>»</button>
                     </div>
                 </div>
-                <p className='mt-4'>
+                <p className='pt-2'>
                     Showing {currentPage} of {totalPages}
                 </p>
             </div>
@@ -68,8 +68,8 @@ export default function CardList({ taskList, onDelete }: any) {
     }
 
     return (
-        <div className="p-6">
-            <div className='h-96'>
+        <div className="p-4">
+            <div className='md:h-96'>
                 <div className='gap-4 grid grid-cols-1 md:grid-cols-2'>
                     {generateCard()}
                 </div>
