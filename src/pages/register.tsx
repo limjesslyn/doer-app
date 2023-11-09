@@ -6,6 +6,9 @@ import { API_BASE_URL } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function register() {
     const { isAuthenticated } = useAuth();
 
@@ -21,11 +24,11 @@ export default function register() {
         e.preventDefault();
 
         if (usernameInput.value.length < 6) {
-            alert('username must be longer than 6 character')
+            toast.error('Username must be longer than 6 character')
         } else if (passwordInput.value.length < 8) {
-            alert('password must be longer than 8 character')
+            toast.error('Password must be longer than 8 character')
         } else if (passwordInput.value !== confirmPasswordInput.value) {
-            alert('password mismatch')
+            toast.error('Password and confirm password mismatch')
         } else {
             try {
                 const res = await fetch(`${API_BASE_URL}/auth/signup`, {
@@ -183,6 +186,19 @@ export default function register() {
                     Login here
                 </Link>
             </p>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     )
 }

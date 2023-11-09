@@ -8,6 +8,9 @@ import CardList from '@/components/CardList';
 import { useRouter } from 'next/navigation';
 import { API_BASE_URL, onDelete } from '@/utils/utils';
 
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Home() {
     const { isAuthenticated } = useAuth();
 
@@ -40,8 +43,12 @@ export default function Home() {
             const res = await onDelete(taskID);
             if (res !== undefined) {
                 if (res.ok) {
-                    alert('task deleted successfully!')
-                    router.refresh()
+                    toast.success('Task deleted successfully!', {
+                        onClose: () => {
+                            router.push('/home');
+                        }
+                    })
+
                 }
             }
             return null;
@@ -73,6 +80,19 @@ export default function Home() {
                         </button>
                     </div>
                 </main>
+
+                <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             </>
         )
     }

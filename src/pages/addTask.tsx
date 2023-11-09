@@ -6,7 +6,8 @@ import useInput from '@/hooks/useInput';
 import { API_BASE_URL } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
 
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AddTask() {
     const router = useRouter();
@@ -38,8 +39,11 @@ export default function AddTask() {
             })
 
             if (res.ok) {
-                alert('task added succesfully!')
-                router.push('/home');
+                toast.success('task added successfully!',{
+                    onClose: () =>{
+                        router.push('/home');
+                    }
+                })
             }
         } catch (error) {
             console.log('Error', error);
@@ -100,8 +104,20 @@ export default function AddTask() {
                         </div>
                     </form>
                 </div>
-
             </main>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </>
     )
 

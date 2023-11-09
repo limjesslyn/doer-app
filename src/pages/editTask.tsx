@@ -1,11 +1,15 @@
 import 'tailwindcss/tailwind.css';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import Navigation from "@/components/Navigation"
 import useInput from '@/hooks/useInput';
 import { API_BASE_URL } from '@/utils/utils';
 import { useRouter } from 'next/router';
+
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function editTask() {
     const router = useRouter();
@@ -48,8 +52,11 @@ export default function editTask() {
             })
 
             if (res.ok) {
-                alert('task updated successfully!')
-                router.push('/home');
+                toast.success('Task updated successfully!',{
+                    onClose: () =>{
+                        router.push('/home');
+                    }
+                })
             }
         } catch (error) {
             console.log('Error', error);
@@ -66,7 +73,9 @@ export default function editTask() {
                     <span className='font-semibold'>{taskNameOld}</span>
                     {' '} Task
                 </h2>
+
                 <div className='divider' />
+
                 <div className="mt-10 sm:mx-auto w-full md:w-2/3">
                     <form className="space-y-6" onSubmit={onEditHandler}>
                         <div className='md:flex md:items-center mb-6 justify-between'>
@@ -127,8 +136,20 @@ export default function editTask() {
                         </div>
                     </form>
                 </div>
-
             </main>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </>
     )
 }

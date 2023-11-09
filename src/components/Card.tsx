@@ -1,8 +1,8 @@
 import { showFormattedDate } from "@/utils/utils";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Card(props: any) {
+    
     const router = useRouter();
     const data = props.data;
 
@@ -59,7 +59,7 @@ export default function Card(props: any) {
                         </button>
                         <button
                             className="btn btn-error hover:bg-red-500 hover:border-red-500 md:w-1/4 sm:w-1/2 text-white"
-                            onClick={() => data.onDelete(props.id)}
+                            onClick={() => props.onDelete(data.id)}
                         >
                             Delete
                         </button>

@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 import useInput from '@/hooks/useInput';
 import { useRouter } from 'next/navigation';
 
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Profile() {
 
     const [userProfileData, setUserProfileData] = useState<ProfileProps>();
@@ -21,9 +24,9 @@ export default function Profile() {
         e.preventDefault();
 
         if (newPasswordInput.value.length < 8) {
-            alert('password must be longer than 8 character')
+            toast.error('Password must be longer than 8 character')
         } else if (oldPasswordInput.value === newPasswordInput.value) {
-            alert('new password is same with old one')
+            toast.error('New password is same with old one')
         } else {
             try {
                 const token = localStorage.getItem('token');
@@ -43,11 +46,15 @@ export default function Profile() {
                 })
 
                 if (res.ok) {
-                    alert('Update success!');
-                    router.refresh();
+                    toast.success('Profile update success!', {
+                        onClose: () => {
+                            router.refresh();
+                        }
+                    });
                 }
             } catch (error) {
                 console.log('Error', error);
+                
             }
         }
     }
@@ -172,8 +179,19 @@ export default function Profile() {
                             </button>
                         </div>
                     </form>
-
                 </div>
+
+                <ToastContainer
+                    position="top-right"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
 
             </main>
         </>

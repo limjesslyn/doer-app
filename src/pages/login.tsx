@@ -6,6 +6,9 @@ import { API_BASE_URL } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function login() {
     const { isAuthenticated } = useAuth();
 
@@ -36,7 +39,7 @@ export default function login() {
 
                 router.push('/home');
             } else {
-                alert(`Your username or password doesn't match!`)
+                toast.error(`Your username or password doesn't match!`)
             }
         } catch (error) {
             console.error('Error', error);
@@ -117,6 +120,19 @@ export default function login() {
                     Register here
                 </Link>
             </p>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     )
 }

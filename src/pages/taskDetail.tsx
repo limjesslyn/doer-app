@@ -4,6 +4,9 @@ import Navigation from "@/components/Navigation"
 import { useRouter } from 'next/router';
 import { onDelete, showFormattedDate } from '@/utils/utils';
 
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function taskDetail() {
     const router = useRouter();
 
@@ -29,8 +32,11 @@ export default function taskDetail() {
 
             if (res !== undefined) {
                 if (res.ok) {
-                    alert('task deleted successfully!')
-                    router.push('/home')
+                    toast.success('Task deleted successfully!', {
+                        onClose: () => {
+                            router.push('/home');
+                        }
+                    })
                 }
             }
             return null;
@@ -73,6 +79,19 @@ export default function taskDetail() {
                 </div>
 
             </main>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </>
     )
 }
