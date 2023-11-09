@@ -1,4 +1,5 @@
-import { API_BASE_URL, showFormattedDate } from "@/utils/utils";
+import { showFormattedDate } from "@/utils/utils";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Card(props: any) {
@@ -15,12 +16,30 @@ export default function Card(props: any) {
         })
     }
 
+    const onDetailHandler = () => {
+        router.push({
+            pathname: '/taskDetail',
+            query: {
+                taskID: `${props.id}`,
+                createdAt: `${props.created_at}`,
+                name: `${props.name}`,
+                description: `${props.description}`,
+                isComplete: `${props.is_complete}`
+            }
+        })
+    }
+
     return (
         <>
             <div className="card bg-neutral text-neutral-content h-full">
                 <div className="card-body">
                     <p className="text-gray-400 text-sm text-end">{showFormattedDate(props.created_at)}</p>
-                    <h2 className="card-title">{props.name}</h2>
+                    <button 
+                        className="card-title hover:underline"
+                        onClick={onDetailHandler}
+                    >
+                        {props.name}
+                    </button>
                     <p className="truncate">{props.description}</p>
                     <div className="card-actions justify-end flex flex-row flex-nowrap gap-4 mt-4">
                         <button

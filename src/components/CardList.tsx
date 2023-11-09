@@ -1,10 +1,6 @@
 import Card from "./Card"
 
 export default function CardList({taskList, onDelete}:any) {
-    // const taskList = props.taskList;
-
-    console.log(taskList);
-
     const generateCard = () => {
         let content = taskList.map((task: any) => {
             return (
@@ -14,9 +10,7 @@ export default function CardList({taskList, onDelete}:any) {
                     onDelete={onDelete}
                 />
             )
-        })
-        console.log(content);
-        
+        })        
 
         if (content.length === 0) {
             return (

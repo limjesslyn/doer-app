@@ -62,7 +62,11 @@ export default function editTask() {
         <>
             <Navigation />
             <main className="flex flex-col p-6">
-                <h2 className="text-center text-xl">Edit List</h2>
+            <h2 className="text-center text-xl">
+                    Editing {' '}
+                    <span className='font-semibold'>{taskNameOld}</span>
+                    {' '} Task
+                </h2>
                 <div className='divider' />
                 <div className="mt-10 sm:mx-auto w-full md:w-2/3">
                     <form className="space-y-6" onSubmit={onEditHandler}>

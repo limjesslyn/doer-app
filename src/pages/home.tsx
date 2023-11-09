@@ -7,7 +7,7 @@ import LoginPage from './login';
 import CardList from '@/components/CardList';
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/navigation';
-import { API_BASE_URL } from '@/utils/utils';
+import { API_BASE_URL, onDelete } from '@/utils/utils';
 
 export default function Home() {
     const { isAuthenticated } = useAuth();
@@ -36,25 +36,19 @@ export default function Home() {
         }
     }
 
-    const onDelete = async (taskID:any) => {
-        const token = localStorage.getItem('token');
-
+    const onDeleteHandler = async (taskID: any) => {
         try {
-            const res = await fetch(`${API_BASE_URL}/task/${taskID}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            })
+            const res = await onDelete(taskID);
 
-            if (res.ok) {
-                alert('task deleted successfully!')
-                router.refresh();
+            if (res !== undefined) {
+                if (res.ok) {
+                    alert('task deleted successfully!')
+                    router.refresh()
+                }
             }
+            return null;
         } catch (error) {
             console.log('Error', error);
-
         }
     }
 
@@ -71,7 +65,7 @@ export default function Home() {
                     <h2 className="text-center text-xl">Your List</h2>
                     <div className='divider' />
                     <div>
-                        <CardList taskList={taskList} onDelete={onDelete} />
+                        <CardList taskList={taskList} onDelete={onDeleteHandler} />
                     </div>
                     <div className='fixed z-90 bottom-10 right-8'>
                         <button

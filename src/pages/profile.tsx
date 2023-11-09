@@ -85,7 +85,8 @@ export default function Profile() {
         <>
             <Navigation />
             <main className="flex flex-col max-w-xl mx-auto p-6">
-                <h2 className="font-semibold text-lg">Your Profile</h2>
+                <h2 className="text-center text-xl">Your Profile</h2>
+                <div className='divider' />
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
                     <form className="space-y-6" onSubmit={onUpdateHandler}>
                         <div className='md:flex md:items-center mb-6 justify-between'>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // account
 /**
  * email    : jdoe@mail.com
@@ -13,7 +14,7 @@ export interface ProfileProps {
     name: string
 }
 
-export const showFormattedDate = (date:any) => {
+export const showFormattedDate = (date: any) => {
     return new Date(date).toLocaleDateString('en-EN', {
         weekday: 'long',
         year: 'numeric',
@@ -21,3 +22,20 @@ export const showFormattedDate = (date:any) => {
         day: 'numeric',
     });
 };
+
+export const onDelete = async (taskID: any) => {
+    const token = localStorage.getItem('token');
+
+    try {
+        const res = await fetch(`${API_BASE_URL}/task/${taskID}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        })
+        return res;
+    } catch (error) {
+        console.log('Error', error);
+    }
+}
