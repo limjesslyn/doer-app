@@ -15,7 +15,8 @@ export default function Navigation() {
             <div className="flex-1">
                 <Link href="/home" className="btn btn-ghost normal-case text-xl">doer</Link>
             </div>
-            <div className="flex-none ">
+    
+            <div className="flex-none">
                 <ul className="menu menu-horizontal px-1 gap-2">
                     <li>
                         <button
@@ -38,6 +39,7 @@ export default function Navigation() {
                     </li>
                 </ul>
             </div>
+            
         </div>
     )
 }

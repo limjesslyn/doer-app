@@ -62,7 +62,7 @@ export default function editTask() {
         <>
             <Navigation />
             <main className="flex flex-col p-6">
-            <h2 className="text-center text-xl">
+                <h2 className="text-center text-xl">
                     Editing {' '}
                     <span className='font-semibold'>{taskNameOld}</span>
                     {' '} Task

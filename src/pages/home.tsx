@@ -5,7 +5,6 @@ import Navigation from "@/components/Navigation";
 import useAuth from '@/hooks/useAuth';
 import LoginPage from './login';
 import CardList from '@/components/CardList';
-import Footer from '@/components/Footer';
 import { useRouter } from 'next/navigation';
 import { API_BASE_URL, onDelete } from '@/utils/utils';
 
@@ -29,7 +28,7 @@ export default function Home() {
 
             const data = await res.json();
             if (res.ok) {
-                setTaskList(data.data);                
+                setTaskList(data.data);
             }
         } catch (error) {
             console.log('Error', error);
@@ -76,7 +75,6 @@ export default function Home() {
                         </button>
                     </div>
                 </main>
-                {/* <Footer /> */}
             </>
         )
     }

@@ -1,7 +1,6 @@
 import 'tailwindcss/tailwind.css';
 
 import { useState } from 'react';
-import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import useInput from '@/hooks/useInput';
 import { API_BASE_URL } from '@/utils/utils';
@@ -20,7 +19,7 @@ export default function AddTask() {
         setTaskDesc(content);
     }
 
-    const onAddTaskHandler = async (e:any) => {
+    const onAddTaskHandler = async (e: any) => {
         e.preventDefault();
 
         const token = localStorage.getItem('token');
