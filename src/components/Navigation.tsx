@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Navigation() {
     const router = useRouter();
@@ -8,14 +8,19 @@ export default function Navigation() {
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('token');
         router.push('/login');
-    }
+    };
 
     return (
         <div className="navbar border-b-2 bg-base-300">
             <div className="flex-1">
-                <Link href="/home" className="btn btn-ghost normal-case text-xl">doer</Link>
+                <Link
+                    href="/home"
+                    className="btn btn-ghost normal-case text-xl"
+                >
+                    doer
+                </Link>
             </div>
-    
+
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1 gap-2">
                     <li>
@@ -39,7 +44,6 @@ export default function Navigation() {
                     </li>
                 </ul>
             </div>
-            
         </div>
-    )
+    );
 }

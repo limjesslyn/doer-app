@@ -2,14 +2,13 @@ import 'tailwindcss/tailwind.css';
 
 import { useState, useRef } from 'react';
 
-import Navigation from "@/components/Navigation"
+import Navigation from '@/components/Navigation';
 import useInput from '@/hooks/useInput';
 import { API_BASE_URL } from '@/utils/utils';
 import { useRouter } from 'next/router';
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 export default function editTask() {
     const router = useRouter();
@@ -25,12 +24,11 @@ export default function editTask() {
     const onInputHandler = (e: any) => {
         let content = e.target.value;
         setTaskDesc(content);
-    }
+    };
 
     const onCheckChangeHandler = () => {
         setIsChecked(!isChecked);
-
-    }
+    };
 
     const onEditHandler = async (e: any) => {
         e.preventDefault();
@@ -41,44 +39,42 @@ export default function editTask() {
             const res = await fetch(`${API_BASE_URL}/task/${taskID}`, {
                 method: 'PATCH',
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     name: taskNameInput.value,
                     description: taskDesc,
-                    is_complete: isChecked
-                })
-            })
+                    is_complete: isChecked,
+                }),
+            });
 
             if (res.ok) {
-                toast.success('Task updated successfully!',{
-                    onClose: () =>{
+                toast.success('Task updated successfully!', {
+                    onClose: () => {
                         router.push('/home');
-                    }
-                })
+                    },
+                });
             }
         } catch (error) {
             console.log('Error', error);
-
         }
-    }
+    };
 
     return (
         <>
             <Navigation />
             <main className="flex flex-col p-6">
                 <h2 className="text-center text-xl">
-                    Editing {' '}
-                    <span className='font-semibold'>{taskNameOld}</span>
-                    {' '} Task
+                    Editing <span className="font-semibold">{taskNameOld}</span>{' '}
+                    Task
                 </h2>
 
-                <div className='divider' />
+                <div className="divider" />
 
                 <div className="mt-10 sm:mx-auto w-full md:w-2/3">
                     <form className="space-y-6" onSubmit={onEditHandler}>
-                        <div className='md:flex md:items-center mb-6 justify-between'>
+                        <div className="md:flex md:items-center mb-6 justify-between">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
                                 Task Name
                             </label>
@@ -97,7 +93,7 @@ export default function editTask() {
                             </div>
                         </div>
 
-                        <div className='md:flex md:items-center mb-6 justify-between'>
+                        <div className="md:flex md:items-center mb-6 justify-between">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
                                 Task Description
                             </label>
@@ -116,7 +112,9 @@ export default function editTask() {
 
                         <div className="form-control items-start md:flex justify-between flex-row">
                             <label className="label cursor-pointer text-sm font-medium leading-6 text-gray-900">
-                                <span className="label-text mr-5">Completed</span>
+                                <span className="label-text mr-5">
+                                    Completed
+                                </span>
                                 <input
                                     type="checkbox"
                                     className="checkbox checkbox-primary"
@@ -126,7 +124,7 @@ export default function editTask() {
                             </label>
                         </div>
 
-                        <div className='flex justify-center pt-5'>
+                        <div className="flex justify-center pt-5">
                             <button
                                 type="submit"
                                 className="flex w-2/3 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-2"
@@ -151,5 +149,5 @@ export default function editTask() {
                 theme="light"
             />
         </>
-    )
+    );
 }

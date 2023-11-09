@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const isUserAuthenticated = () => {    
+const isUserAuthenticated = () => {
     return localStorage.getItem('isLoggedIn') !== null;
 };
 

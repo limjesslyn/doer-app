@@ -1,11 +1,9 @@
-import { showFormattedDate } from "@/utils/utils";
-import { useRouter } from "next/router";
+import { showFormattedDate } from '@/utils/utils';
+import { useRouter } from 'next/router';
 
 export default function Card(props: any) {
-    
     const router = useRouter();
     const data = props.data;
-
 
     const onEditHandler = () => {
         router.push({
@@ -13,10 +11,10 @@ export default function Card(props: any) {
             query: {
                 taskID: `${data.id}`,
                 name: `${data.name}`,
-                description: `${data.description}`
-            }
-        })
-    }
+                description: `${data.description}`,
+            },
+        });
+    };
 
     const onDetailHandler = () => {
         router.push({
@@ -26,22 +24,28 @@ export default function Card(props: any) {
                 createdAt: `${data.created_at}`,
                 name: `${data.name}`,
                 description: `${data.description}`,
-                isComplete: `${data.is_complete}`
-            }
-        })
-    }
+                isComplete: `${data.is_complete}`,
+            },
+        });
+    };
 
     return (
         <>
             <div className="card bg-neutral text-neutral-content h-full">
                 <div className="card-body py-5">
                     <div className="flex flex-col md:flex-row justify-between">
-                        <span className="text-gray-400 text-sm">{showFormattedDate(data.created_at)}</span>
-                        {data.is_complete ? 
-                            <span className="text-gray-400 text-sm text-green-300">Completed</span> 
-                            : 
-                            <span className="text-gray-400 text-sm text-red-300">Not Completed</span>
-                        }
+                        <span className="text-gray-400 text-sm">
+                            {showFormattedDate(data.created_at)}
+                        </span>
+                        {data.is_complete ? (
+                            <span className="text-gray-400 text-sm text-green-300">
+                                Completed
+                            </span>
+                        ) : (
+                            <span className="text-gray-400 text-sm text-red-300">
+                                Not Completed
+                            </span>
+                        )}
                     </div>
                     <button
                         className="card-title hover:underline"
@@ -67,5 +71,5 @@ export default function Card(props: any) {
                 </div>
             </div>
         </>
-    )
+    );
 }

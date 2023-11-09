@@ -1,16 +1,15 @@
 import 'tailwindcss/tailwind.css';
 
-import Navigation from "@/components/Navigation"
+import Navigation from '@/components/Navigation';
 import { API_BASE_URL, ProfileProps } from '@/utils/utils';
 import { useEffect, useState } from 'react';
 import useInput from '@/hooks/useInput';
 import { useRouter } from 'next/navigation';
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile() {
-
     const [userProfileData, setUserProfileData] = useState<ProfileProps>();
 
     const router = useRouter();
@@ -24,9 +23,9 @@ export default function Profile() {
         e.preventDefault();
 
         if (newPasswordInput.value.length < 8) {
-            toast.error('Password must be longer than 8 character')
+            toast.error('Password must be longer than 8 character');
         } else if (oldPasswordInput.value === newPasswordInput.value) {
-            toast.error('New password is same with old one')
+            toast.error('New password is same with old one');
         } else {
             try {
                 const token = localStorage.getItem('token');
@@ -34,30 +33,29 @@ export default function Profile() {
                 const res = await fetch(`${API_BASE_URL}/user`, {
                     method: 'PATCH',
                     headers: {
-                        'Authorization': `Bearer ${token}`,
+                        Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         email: emailInput.value,
                         name: nameInput.value,
                         old_password: oldPasswordInput.value,
-                        new_password: newPasswordInput.value
-                    })
-                })
+                        new_password: newPasswordInput.value,
+                    }),
+                });
 
                 if (res.ok) {
                     toast.success('Profile update success!', {
                         onClose: () => {
                             router.refresh();
-                        }
+                        },
                     });
                 }
             } catch (error) {
                 console.log('Error', error);
-                
             }
         }
-    }
+    };
 
     const fetchUserInfo = async () => {
         const token = localStorage.getItem('token');
@@ -66,10 +64,10 @@ export default function Profile() {
             const res = await fetch(`${API_BASE_URL}/user`, {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
-                }
-            })
+                },
+            });
 
             const data = await res.json();
             if (res.ok) {
@@ -78,11 +76,11 @@ export default function Profile() {
         } catch (error) {
             console.log('Error', error);
         }
-    }
+    };
 
     useEffect(() => {
         fetchUserInfo();
-    }, [])
+    }, []);
 
     if (userProfileData === undefined) {
         return null;
@@ -93,10 +91,10 @@ export default function Profile() {
             <Navigation />
             <main className="flex flex-col max-w-xl mx-auto p-6">
                 <h2 className="text-center text-xl">Your Profile</h2>
-                <div className='divider' />
+                <div className="divider" />
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
                     <form className="space-y-6" onSubmit={onUpdateHandler}>
-                        <div className='md:flex md:items-center mb-6 justify-between'>
+                        <div className="md:flex md:items-center mb-6 justify-between">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
                                 Email
                             </label>
@@ -115,7 +113,7 @@ export default function Profile() {
                             </div>
                         </div>
 
-                        <div className='md:flex md:items-center mb-6 justify-between'>
+                        <div className="md:flex md:items-center mb-6 justify-between">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
                                 Name
                             </label>
@@ -134,7 +132,7 @@ export default function Profile() {
                             </div>
                         </div>
 
-                        <div className='md:flex md:items-center mb-6 justify-between'>
+                        <div className="md:flex md:items-center mb-6 justify-between">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
                                 Old Password
                             </label>
@@ -152,7 +150,7 @@ export default function Profile() {
                             </div>
                         </div>
 
-                        <div className='md:flex md:items-center mb-6 justify-between'>
+                        <div className="md:flex md:items-center mb-6 justify-between">
                             <label className="block text-sm font-medium leading-6 text-gray-900">
                                 New Password
                             </label>
@@ -170,7 +168,7 @@ export default function Profile() {
                             </div>
                         </div>
 
-                        <div className='flex justify-center pt-5'>
+                        <div className="flex justify-center pt-5">
                             <button
                                 type="submit"
                                 className="flex w-2/3 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -192,8 +190,7 @@ export default function Profile() {
                     draggable
                     pauseOnHover
                 />
-
             </main>
         </>
-    )
+    );
 }

@@ -1,14 +1,14 @@
 import 'tailwindcss/tailwind.css';
 
 import { useEffect, useState } from 'react';
-import Navigation from "@/components/Navigation";
+import Navigation from '@/components/Navigation';
 import useAuth from '@/hooks/useAuth';
 import LoginPage from './login';
 import CardList from '@/components/CardList';
 import { useRouter } from 'next/navigation';
 import { API_BASE_URL, onDelete } from '@/utils/utils';
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
@@ -24,10 +24,10 @@ export default function Home() {
             const res = await fetch(`${API_BASE_URL}/task`, {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
-            })
+            });
 
             const data = await res.json();
             if (res.ok) {
@@ -36,7 +36,7 @@ export default function Home() {
         } catch (error) {
             console.log('Error', error);
         }
-    }
+    };
 
     const onDeleteHandler = async (taskID: any) => {
         try {
@@ -46,20 +46,19 @@ export default function Home() {
                     toast.success('Task deleted successfully!', {
                         onClose: () => {
                             router.refresh();
-                        }
-                    })
-
+                        },
+                    });
                 }
             }
             return null;
         } catch (error) {
             console.log('Error', error);
         }
-    }
+    };
 
     useEffect(() => {
         fetchList();
-    }, [])
+    }, []);
 
     if (isAuthenticated) {
         return (
@@ -67,13 +66,16 @@ export default function Home() {
                 <Navigation />
                 <main className="flex flex-col p-6">
                     <h2 className="text-center text-xl">Your List</h2>
-                    <div className='divider' />
+                    <div className="divider" />
                     <div>
-                        <CardList taskList={taskList} onDelete={onDeleteHandler} />
+                        <CardList
+                            taskList={taskList}
+                            onDelete={onDeleteHandler}
+                        />
                     </div>
-                    <div className='fixed z-90 bottom-10 right-8'>
+                    <div className="fixed z-90 bottom-10 right-8">
                         <button
-                            className='btn rounded-full text-xl w-[64px] h-[64px] btn-primary font-bold'
+                            className="btn rounded-full text-xl w-[64px] h-[64px] btn-primary font-bold"
                             onClick={() => router.push('/addTask')}
                         >
                             +
@@ -82,19 +84,19 @@ export default function Home() {
                 </main>
 
                 <ToastContainer
-                position="top-right"
-                autoClose={2500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
+                    position="top-right"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
             </>
-        )
+        );
     }
 
     if (taskList === undefined) {
@@ -104,5 +106,5 @@ export default function Home() {
         <main className="flex min-h-screen flex-col p-6">
             <LoginPage />
         </main>
-    )
+    );
 }

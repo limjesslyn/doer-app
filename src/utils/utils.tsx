@@ -1,7 +1,7 @@
 // account
 /**
  * email    : jdoe@mail.com
- * name     : John Doe  
+ * name     : John Doe
  * username : jondoer
  * password : johndoer
  */
@@ -9,8 +9,8 @@
 export const API_BASE_URL = 'https://task.amidin.site';
 
 export interface ProfileProps {
-    email: string,
-    name: string
+    email: string;
+    name: string;
 }
 
 export const showFormattedDate = (date: any) => {
@@ -29,12 +29,12 @@ export const onDelete = async (taskID: any) => {
         const res = await fetch(`${API_BASE_URL}/task/${taskID}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
-        })
+        });
         return res;
     } catch (error) {
         console.log('Error', error);
     }
-}
+};

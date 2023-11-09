@@ -1,17 +1,14 @@
-import './globals.css'
+import './globals.css';
 import 'tailwindcss/tailwind.css';
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" data-theme="light">
-      <body>
-        {children}
-      </body>
-    </html>
-
-  )
+    return (
+        <html lang="en" data-theme="light">
+            <body>{children}</body>
+        </html>
+    );
 }

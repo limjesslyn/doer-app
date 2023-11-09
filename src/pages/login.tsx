@@ -6,7 +6,7 @@ import { API_BASE_URL } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function login() {
@@ -28,23 +28,23 @@ export default function login() {
                 },
                 body: JSON.stringify({
                     username_or_email: usernameOrEmailInput.value,
-                    password: passwordInput.value
-                })
-            })
+                    password: passwordInput.value,
+                }),
+            });
 
             const data = await res.json();
             if (res.ok) {
-                localStorage.setItem('isLoggedIn', 'true')
-                localStorage.setItem('token', data.token)
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('token', data.token);
 
                 router.push('/home');
             } else {
-                toast.error(`Your username or password doesn't match!`)
+                toast.error(`Your username or password doesn't match!`);
             }
         } catch (error) {
             console.error('Error', error);
         }
-    }
+    };
 
     if (isAuthenticated) {
         router.push('/home');
@@ -55,10 +55,7 @@ export default function login() {
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Login to your 
-                        {' '}
-                        <span className='underline'>Doer</span>
-                        {' '} 
+                        Login to your <span className="underline">Doer</span>{' '}
                         account
                     </h2>
                 </div>
@@ -112,11 +109,10 @@ export default function login() {
                             </button>
                         </div>
                     </form>
-
                 </div>
             </div>
             <p className="text-center text-sm text-gray-500">
-                Don&apos;t have an account? {' '}
+                Don&apos;t have an account?{' '}
                 <Link
                     href="/register"
                     className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
@@ -138,5 +134,5 @@ export default function login() {
                 theme="light"
             />
         </div>
-    )
+    );
 }
