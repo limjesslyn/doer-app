@@ -45,7 +45,7 @@ export default function Home() {
                 if (res.ok) {
                     toast.success('Task deleted successfully!', {
                         onClose: () => {
-                            router.push('/home');
+                            router.refresh();
                         }
                     })
 
