@@ -34,8 +34,8 @@ export default function Card(props: any) {
     return (
         <>
             <div className="card bg-neutral text-neutral-content h-full">
-                <div className="card-body">
-                    <div className="flex flex-row justify-between">
+                <div className="card-body py-5">
+                    <div className="flex flex-col md:flex-row justify-between">
                         <span className="text-gray-400 text-sm">{showFormattedDate(data.created_at)}</span>
                         {data.is_complete ? 
                             <span className="text-gray-400 text-sm text-green-300">Completed</span> 
