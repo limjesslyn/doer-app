@@ -4,14 +4,16 @@ import { useRouter } from "next/router";
 
 export default function Card(props: any) {
     const router = useRouter();
+    const data = props.data;
+    
 
     const onEditHandler = () => {
         router.push({
             pathname: '/editTask',
             query: {
-                taskID: `${props.id}`,
-                name: `${props.name}`,
-                description: `${props.description}`
+                taskID: `${data.id}`,
+                name: `${data.name}`,
+                description: `${data.description}`
             }
         })
     }
@@ -20,11 +22,11 @@ export default function Card(props: any) {
         router.push({
             pathname: '/taskDetail',
             query: {
-                taskID: `${props.id}`,
-                createdAt: `${props.created_at}`,
-                name: `${props.name}`,
-                description: `${props.description}`,
-                isComplete: `${props.is_complete}`
+                taskID: `${data.id}`,
+                createdAt: `${data.created_at}`,
+                name: `${data.name}`,
+                description: `${data.description}`,
+                isComplete: `${data.is_complete}`
             }
         })
     }
@@ -33,14 +35,14 @@ export default function Card(props: any) {
         <>
             <div className="card bg-neutral text-neutral-content h-full">
                 <div className="card-body">
-                    <p className="text-gray-400 text-sm text-end">{showFormattedDate(props.created_at)}</p>
+                    <p className="text-gray-400 text-sm text-end">{showFormattedDate(data.created_at)}</p>
                     <button 
                         className="card-title hover:underline"
                         onClick={onDetailHandler}
                     >
                         {props.name}
                     </button>
-                    <p className="truncate">{props.description}</p>
+                    <p className="truncate">{data.description}</p>
                     <div className="card-actions justify-end flex flex-row flex-nowrap gap-4 mt-4">
                         <button
                             className="btn btn-info hover:bg-sky-600 hover:border-sky-600 text-white md:w-1/4 sm:w-1/2"
@@ -50,7 +52,7 @@ export default function Card(props: any) {
                         </button>
                         <button
                             className="btn btn-error hover:bg-red-500 hover:border-red-500 md:w-1/4 sm:w-1/2 text-white"
-                            onClick={() => props.onDelete(props.id)}
+                            onClick={() => data.onDelete(props.id)}
                         >
                             Delete
                         </button>
