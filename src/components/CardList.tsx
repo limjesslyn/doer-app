@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import Card from "./Card"
 
 export default function CardList({taskList, onDelete}:any) {
     const generateCard = () => {
+        // const itemsPerPage = 4;
+        // const [currentPage, setCurrentPage] = useState(1);
+
         let content = taskList.map((task: any) => {
             return (
                 <Card

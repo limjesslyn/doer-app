@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import 'tailwindcss/tailwind.css';
 
 import Navigation from "@/components/Navigation"

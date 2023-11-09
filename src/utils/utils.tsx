@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 // account
 /**
  * email    : jdoe@mail.com
