@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 export default function Card(props: any) {
     const router = useRouter();
     const data = props.data;
-    
+
 
     const onEditHandler = () => {
         router.push({
@@ -35,8 +35,15 @@ export default function Card(props: any) {
         <>
             <div className="card bg-neutral text-neutral-content h-full">
                 <div className="card-body">
-                    <p className="text-gray-400 text-sm text-end">{showFormattedDate(data.created_at)}</p>
-                    <button 
+                    <div className="flex flex-row justify-between">
+                        <span className="text-gray-400 text-sm">{showFormattedDate(data.created_at)}</span>
+                        {data.is_complete ? 
+                            <span className="text-gray-400 text-sm text-green-300">Completed</span> 
+                            : 
+                            <span className="text-gray-400 text-sm text-red-300">Not Completed</span>
+                        }
+                    </div>
+                    <button
                         className="card-title hover:underline"
                         onClick={onDetailHandler}
                     >

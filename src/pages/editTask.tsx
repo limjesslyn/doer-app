@@ -105,8 +105,8 @@ export default function editTask() {
                             </div>
                         </div>
 
-                        <div className="form-control items-start">
-                            <label className="label cursor-pointer">
+                        <div className="form-control items-start md:flex justify-between flex-row">
+                            <label className="label cursor-pointer text-sm font-medium leading-6 text-gray-900">
                                 <span className="label-text mr-5">Completed</span>
                                 <input
                                     type="checkbox"
