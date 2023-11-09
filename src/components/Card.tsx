@@ -47,7 +47,7 @@ export default function Card(props: any) {
                         className="card-title hover:underline"
                         onClick={onDetailHandler}
                     >
-                        {props.name}
+                        {data.name}
                     </button>
                     <p className="truncate">{data.description}</p>
                     <div className="card-actions justify-end flex flex-row flex-nowrap gap-4 mt-4">

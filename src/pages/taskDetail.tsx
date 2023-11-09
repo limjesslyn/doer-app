@@ -57,7 +57,7 @@ export default function taskDetail() {
                 <div className="sm:mx-auto w-full md:w-2/3">
                     <div className='w-full h-full'>
                         <div className="card-body">
-                            <p className="text-gray-400 text-sm text-end">{showFormattedDate(taskCreatedAt)}</p>
+                            <p className="text-gray-500 text-sm text-end">{showFormattedDate(taskCreatedAt)}</p>
                             <h2 className="card-title">{taskName}</h2>
                             <p className='px-4'>{taskDesc}</p>
                             <div className="card-actions justify-center flex flex-row flex-nowrap gap-4 mt-4">
